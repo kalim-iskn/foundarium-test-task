@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  php_fpm:
+    container_name: foundarium_php
+    build: .
+    user: www-data
+    env_file:
+      - .env
+    expose:
+      - 9000
+    ports:
+      - "20:20"
+    depends_on:
+      - database
+    volumes:
+      - .:/opt/app
+      - /var/log/foundarium/php:/var/log/app
+    networks:
+      - foundarium_network
+
+  database:
+    container_name: foundarium_db
+    image: postgres:15rc1-alpine
+    env_file:
+      - .env
+    environment:
+      - "POSTGRES_DB=${DB_DATABASE}"
+      - "POSTGRES_USER=${DB_USERNAME}"
+      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+    volumes:
+      - /var/data/foundarium/postgres/:/var/lib/postgresql/data
+    ports:
+      - 5444:5432
+    networks:
+      - foundarium_network
+
+  nginx:
+    container_name: foundarium_nginx
+    image: nginx:1.23.1-alpine
+    ports:
+      - 100:80
+    volumes:
+      - ./:/opt/app
+      - /var/log/foundarium/nginx/:/var/log/nginx/
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - foundarium_network
+    depends_on:
+      - php_fpm
+
+networks:
+  foundarium_network:
+    driver: bridge
