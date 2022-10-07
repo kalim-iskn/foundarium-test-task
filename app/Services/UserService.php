@@ -2,9 +2,25 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Collection;
+use App\DTO\Requests\SetAutoRequest;
+use App\DTO\UserDto;
 
 interface UserService
 {
-    public function getAll(): Collection;
+    /**
+     * @return array<UserDto>
+     */
+    public function getAll(): array;
+
+    /**
+     * @param SetAutoRequest $request
+     * @return UserDto
+     */
+    public function setAuto(SetAutoRequest $request): UserDto;
+
+    /**
+     * @param int $autoId
+     * @return void
+     */
+    public function freeAuto(int $autoId): void;
 }

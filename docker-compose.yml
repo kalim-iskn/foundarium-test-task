@@ -10,7 +10,7 @@ services:
     expose:
       - 9000
     ports:
-      - "20:20"
+      - "29:20"
     depends_on:
       - database
     volumes:

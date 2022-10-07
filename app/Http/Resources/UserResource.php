@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Models\User;
+use App\DTO\UserDto;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
@@ -30,7 +30,7 @@ class UserResource extends JsonResource
 {
     public function toArray($request)
     {
-        /** @var User $user */
+        /** @var UserDto $user */
         $user = $this->resource;
 
         return [

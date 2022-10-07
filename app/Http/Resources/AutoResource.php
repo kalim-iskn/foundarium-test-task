@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Auto;
+use App\DTO\AutoDto;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
@@ -24,7 +24,7 @@ class AutoResource extends JsonResource
 {
     public function toArray($request)
     {
-        /** @var Auto $auto */
+        /** @var AutoDto $auto */
         $auto = $this->resource;
 
         return [

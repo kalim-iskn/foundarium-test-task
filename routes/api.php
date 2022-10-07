@@ -14,4 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("user", [\App\Http\Controllers\UserController::class, 'getList']);
+Route::controller(\App\Http\Controllers\UserController::class)
+    ->prefix("user")
+    ->group(function () {
+        Route::get("", "getList");
+
+        Route::put("{userId}/auto/{autoId}", "setAuto")
+            ->whereNumber('userId')
+            ->whereNumber('autoId');
+
+        Route::delete("auto/{autoId}", "freeAuto")
+            ->whereNumber('autoId');
+    });
