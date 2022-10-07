@@ -11,17 +11,17 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     @OA\Property(
  *          property="id",
  *          type="integer",
- *          readOnly="true"
+ *          readOnly=true
  *     ),
  *     @OA\Property(
  *          property="name",
  *          type="string",
- *          readOnly="true"
+ *          readOnly=true
  *     ),
  *     @OA\Property(
  *          property="auto",
  *          type="array",
- *          nullable="true",
+ *          nullable=true,
  *          @OA\Items(ref="#/components/schemas/Auto")
  *     ),
  * )

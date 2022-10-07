@@ -7,7 +7,6 @@ use App\Http\Resources\OkResponse;
 use App\Http\Resources\UserResource;
 use App\Services\UserService;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
-use OpenApi\Annotations as OA;
 
 class UserController extends Controller
 {
@@ -49,12 +48,18 @@ class UserController extends Controller
      *     @OA\Parameter(
      *         in="path",
      *         name="userId",
-     *         required=true
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         )
      *     ),
      *     @OA\Parameter(
      *         in="path",
      *         name="autoId",
-     *         required=true
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         )
      *     ),
      *     @OA\Response(
      *         response="200",
@@ -82,7 +87,10 @@ class UserController extends Controller
      *     @OA\Parameter(
      *         in="path",
      *         name="autoId",
-     *         required=true
+     *         required=true,
+     *         @OA\Schema(
+     *             type="integer"
+     *         )
      *     ),
      *     @OA\Response(
      *         response="200",
@@ -97,7 +105,7 @@ class UserController extends Controller
      *     )
      * )
      */
-    public function freeAuto(int $autoId)
+    public function freeAuto(int $autoId): OkResponse
     {
         $this->userService->freeAuto($autoId);
         return new OkResponse();

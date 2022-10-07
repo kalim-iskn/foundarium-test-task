@@ -11,12 +11,12 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     @OA\Property(
  *          property="id",
  *          type="integer",
- *          readOnly="true"
+ *          readOnly=true
  *     ),
  *     @OA\Property(
  *          property="name",
  *          type="string",
- *          readOnly="true"
+ *          readOnly=true
  *     ),
  * )
  */

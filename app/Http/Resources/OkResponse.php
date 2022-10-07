@@ -10,7 +10,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  *     @OA\Property(
  *          property="status",
  *          type="string",
- *          readOnly="true"
+ *          readOnly=true
  *     )
  * )
  */
